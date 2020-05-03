@@ -1,0 +1,27 @@
+npm run start
+npm run build
+npm run test
+
+docker build -f Dockerfile.dev .
+
+docker run -it -p 3000:3000 CONTAINER_ID
+docker run -it -p 3000:3000 -v $(pwd):/app CONTAINER_ID
+docker run -it -p 3000:3000 -v /app/node_modules -v ${PWD}:/app CONTAINER_ID
+docker run -it -p 3000:3000 -v /app/node_modules -v ${PWD}:/app -e CHOKIDAR_USEPOLLING=true CONTAINER_ID
+                                                    "%cd%":/app
+
+docker run -it CONTAINER_ID npm run test
+docker exec -it CONTAINER_ID npm run test
+
+- rodar o dockerfile com nginx 
+docker build .
+docker run -p 8080:80 <image_id>
+
+stdin_open: true -  in docker composo to resolbe a bug... the exec -
+docker-compose down && docker-compose up --build  | rebuild your containers
+
+
+If you are using any version of Windows and your React app is not automatically reloading after a code change:
+services:
+    environment:
+      - CHOKIDAR_USEPOLLING=true
