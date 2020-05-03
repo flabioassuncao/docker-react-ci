@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t flabio/docker-react-ci -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true flabio/docker-react-ci npm run test
